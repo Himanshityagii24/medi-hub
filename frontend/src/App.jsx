@@ -14,6 +14,7 @@ import { Navbar, Footer, Home, Appointment, AllDoctors, AboutUs , Login , Signup
 import TermsAndConditions from "./pages/TermsAndConditions.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import GoToTop from "./components/GoToTop.jsx";
+import OTP from "./components/OTP.jsx";
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/termsandconditions" element={<TermsAndConditions />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/otp" component={OTP} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>

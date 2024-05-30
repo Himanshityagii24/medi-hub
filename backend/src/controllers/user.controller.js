@@ -33,37 +33,32 @@ export const patientRegister = asyncHandler(async (req, res, next) => {
         password,
         role: "Patient",
     });
-    generateToken(createdUser, "User Registrated Successfully!", 200, res);
+    generateToken(createdUser, "User Registered Successfully!", 200, res);
     // return res.status(201).json(
     //     new ApiResponse(200, createdUser, "User registered Successfully")
     // )
 });
 
-
-//! Getting details for the user(patiend & admin)
+//! Getting details for the user (patient & admin)
 export const getUserDetails = asyncHandler(async (req, res, next) => {
     const user = req.user;
 
-    res
-        .status(200)
-        .json(new ApiResponse(200, user, `${user.role} Details`));
+    res.status(200).json(new ApiResponse(200, user, `${user.role} Details`));
 });
 
-//! Getting details for the doctro
-export const getdoctorDetails = asyncHandler(async (req, res, next) => {
+//! Getting details for the doctor
+export const getDoctorDetails = asyncHandler(async (req, res, next) => {
     const user = req.doctor;
 
-    res
-        .status(200)
-        .json(new ApiResponse(200, user, `${user.role} Details`));
+    res.status(200).json(new ApiResponse(200, user, `${user.role} Details`));
 });
+
 export const getUserAppointmentInfo = asyncHandler(async (req, res, next) => {
     const { appointmentId } = req.params;
     try {
         const pipeline = [
             {
-                $match:
-                {
+                $match: {
                     _id: mongoose.Types.ObjectId(appointmentId)
                 }
             },
@@ -116,10 +111,8 @@ export const getUserAppointmentInfo = asyncHandler(async (req, res, next) => {
             throw new ApiError(404, "Appointment not found");
         }
         res.status(200).json(new ApiResponse(200, appointmentInfo, "Appointment Details"));
-
-    } catch {
+    } catch (err) {
         console.error(err);
         res.status(500).json(new ApiResponse(500, null, "Internal Server Error"));
     }
-
 });

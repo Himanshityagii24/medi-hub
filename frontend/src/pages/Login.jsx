@@ -4,6 +4,7 @@ import backgroundImage from "/istockphoto-1073154998-612x612.jpg"; // Import you
 import { toast } from 'react-toastify'; // Import toast from react-toastify
 import showEye from "../../public/showEye.svg";
 import hideEye from "../../public/hideEye.svg";
+
 function Login() {
   const [password, setPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ function Login() {
       [name]: value, // Update the state directly with the new value
     }));
   };
-  
+
   // Function to handle form submission (login)
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -31,10 +32,10 @@ function Login() {
     <div
       className='p-5 flex flex-col items-center'
       style={{
-        backgroundImage:`url(${backgroundImage})`,
-        backgroundRepeat:'no-repeat',
-        backgroundSize:'cover',
-        backgroundPosition:'center',
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
       <div className='bg-white bg-opacity-70 shadow-lg border border-black rounded-md p-5 w-full md:w-[50%] m-4'>
@@ -53,26 +54,22 @@ function Login() {
             />
             <label htmlFor='password'>Password:</label>
             <div className='relative'>
-            <input
-              type={password ? "text" : "password"}
-              name='password'
-              placeholder='Password'
-              value={formData.password}
-              onChange={handleInputChange}
-              id='password'
-              className='border border-black rounded-md m-2 p-2 w-[98%]'
-            />
-            <img
-              className="absolute w-[30px] top-3 right-5"
-              title={
-                  password ? "Hide password" : "Show password"
-              }
-              src={password ? hideEye : showEye}
-              onClick={() =>
-                  setPassword((prevState) => !prevState)
-              }
-          />
-      </div>
+              <input
+                type={password ? "text" : "password"}
+                name='password'
+                placeholder='Password'
+                value={formData.password}
+                onChange={handleInputChange}
+                id='password'
+                className='border border-black rounded-md m-2 p-2 w-[98%]'
+              />
+              <img
+                className="absolute w-[30px] top-3 right-5"
+                title={password ? "Hide password" : "Show password"}
+                src={password ? hideEye : showEye}
+                onClick={() => setPassword((prevState) => !prevState)}
+              />
+            </div>
             <button className='bg-main_theme text-white font-bold py-2 px-4 rounded-md mt-4'>
               Login to MediHub
             </button>
@@ -82,7 +79,7 @@ function Login() {
           <Link to='/signup'>
             <p className='p-1 md:p-0'>Don't have an account?</p>
           </Link>
-          <Link to='/'>
+          <Link to='/otp'>
             <p className='p-1 md:p-0'>Forgot Password?</p>
           </Link>
         </div>
